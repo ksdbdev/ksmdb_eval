@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ConfigureContent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ConfigureDescriptors>
+    <ConfigureDescriptor Key="SingleInstance">
+      <Value>false</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="Language">
+      <Value>Ch</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="IP">
+      <Value>127.0.0.1</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="Port">
+      <Value>6000</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="WindowState">
+      <Value>Maximized</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="LocationX">
+      <Value>-8</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="LocationY">
+      <Value>-8</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="Width">
+      <Value>1366</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="Height">
+      <Value>706</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="Title">
+      <Value />
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="SystemIcoPath">
+      <Value />
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="FlashImagePath">
+      <Value />
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="LockState">
+      <Value>true</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="LockTime">
+      <Value>300</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="HelpFilePath">
+      <Value />
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="MDBIP">
+      <Value>127.0.0.1</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="MDBPort">
+      <Value>6011</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="MDBUpdateFlag">
+      <Value>635234066630548775</Value>
+    </ConfigureDescriptor>
+    <ConfigureDescriptor Key="MDBInquire">
+      <Value>true</Value>
+    </ConfigureDescriptor>
+  </ConfigureDescriptors>
+</ConfigureContent>
