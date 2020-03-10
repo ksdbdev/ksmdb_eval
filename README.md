@@ -23,4 +23,5 @@ KSMDB对外表现为一个静态链接库。为了支持KSMDB静态链接库的�
 - 技术支持QQ群：1048263371
 - 产品发布渠道：https://github.com/ksdbdev/ksmdb_eval
 - 技术支持邮箱：hongbin.zhu@kingstarfintech.com
+- 公司名称：上海金仕达软件科技有限公司
 - 公司地址：上海市浦东新区亮景路210号
