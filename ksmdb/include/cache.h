@@ -1,32 +1,33 @@
 /*********************************************************************************
   *Copyright(C),2008 - 2020  Kingstar
   *FileName:  cache.h
-  *Author:  é’±æ­£å
+  *Author:  Ç®Õı»ª
   *Version: KSMDB V2.3
-  *Description:  
-     å†…å­˜åº“å†…æ ¸æ¥å£ã€‚
+  *Description:
+	 ÄÚ´æ¿âÄÚºË½Ó¿Ú¡£
 
 
-  *History: 
-     1.Date: 2008.1
-       Author: é’±æ­£å
-       Modification: åˆ›å»ºæ–‡ä»¶
-	   
-     2.Date: 2019.12
-       Author: æœ±é¸¿æ–Œ
-       Modification: å®ç°å¤šçº¿ç¨‹å…±äº«è¿›ç¨‹æ˜ å°„ç©ºé—´çš„æ¥å£
-	   
-**********************************************************************************/ 
+  *History:
+	 1.Date: 2008.1
+	   Author: Ç®Õı»ª
+	   Modification: ´´½¨ÎÄ¼ş
+
+	 2.Date: 2019.12
+	   Author: Öìºè±ó
+	   Modification: ÊµÏÖ¶àÏß³Ì¹²Ïí½ø³ÌÓ³Éä¿Õ¼äµÄ½Ó¿Ú
+
+**********************************************************************************/
 
 #ifndef _CACHE_H
 #define _CACHE_H
 
+#include <stdio.h>
 #include "cachet.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-	bool KsCreateDb(KsDbHandle *database,char *path,char *name,char *version,long size, int dbsesion_mode=0);
+	bool KsCreateDb(KsDbHandle *database,char *path,char *name,char *version, size_t size, int dbsesion_mode=0);
 	bool KsOpenDb(KsDbHandle *database,char *path,char *name,char *version,int mode,int port,bool isolate, 
 		int reuse_shmmap,int shmrcset_mode=0, int dbsesion_mode=0);
 	void KsDeleteDb(KsDbHandle database);
@@ -67,7 +68,7 @@ extern "C" {
 	int  KsGetColSize(KsDbHandle database,KsRecordHandle record,int col);
 	int  KsGetColDecimal(KsDbHandle database,KsRecordHandle record,int col);
 	char *KsGetColData(KsDbHandle database,KsRecordHandle record,int col);
-	void KsMemoryInfo(KsDbHandle database,long *size,long *used);
+	void KsMemoryInfo(KsDbHandle database, size_t *size, size_t *used);
 	bool KsWriteDbDir(KsDbHandle database,char * path);
 	bool KsReadDbDir(KsDbHandle database,char * path);
 	bool KsWriteDbTable(KsDbHandle database,int tableid,char * tablefile);
@@ -84,14 +85,12 @@ extern "C" {
 	void KsTableSize(KsDbHandle database,int tableid,long &count,long &size);
 	void KsDupRecord(KsRecordHandle srecordrow,KsRecordHandle drecordrow);
 	void KsDupCondition(KsConditionHandle scondition,KsConditionHandle dcondition);
-	bool KsDbLoadLicense(char* licensefilename,char* errmsg);
-	void KsDbGetLicenseInfo(int *controlexpitedate,int *expitedate,int *controltransactioncount,long *transactioncount,int *delay);
+    bool KsWriteTableCsv(KsDbHandle database, int tableid, char *filename);
+    bool KsReadTableCsv(KsDbHandle database, int tableid, KsRecordHandle recordrow, char *filename);
 	bool KsWriteTableTxt(KsDbHandle database,int tableid,char *filename);
 	bool KsReadTableTxt(KsDbHandle database,int tableid,KsRecordHandle recordrow,char *filename);
 	bool KsWriteTableBinary(KsDbHandle database,int tableid,char *filename);
 	bool KsReadTableBinary(KsDbHandle database,int tableid,KsRecordHandle recordrow,char *filename);
-
-	//zhb, 2017.11.21, kdmdb2.3
 	bool KsClearWildTrans(KsDbHandle database, int stype, unsigned long pid, unsigned long tid);
 	bool KsClearDBWildTrans(KsDbHandle database);
 

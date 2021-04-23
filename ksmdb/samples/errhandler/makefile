@@ -3,7 +3,7 @@ CXXFLAGS = -g
 LINK = $(CXX)
 
 INCLD = -I../../include
-LIBS = -L../../lib/linux -lksmdb -lm -lrt -lstdc++ -lpthread -lboost_system -lboost_thread
+LIBS = -L../../lib/linux -lksmdb -lm -lrt -lstdc++ -lpthread
 
 TARGET = errhandler
 

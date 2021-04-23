@@ -12,7 +12,7 @@ bool myerrhandle(int errcode,char *errmsg)
 int main(int argc,char **argv)
 {
     DB_student studentdb;
-	long size,inused;
+	size_t size,inused;
 	int errcode;
 	int i;
 	char errmsg[300];
@@ -50,87 +50,69 @@ int main(int argc,char **argv)
 		return 0;
 	}
 	studentdb.SetErrorHandle(myerrhandle);
-	studentdb.LoadLicense("common.lic",errmsg);
-
-	TB_grade grade(studentdb.GetDBHandle());
+	
+    TB_grade grade(studentdb.GetDBHandle());
 	
     studentdb.BeginTransaction();
-
 	for (i=0; i<100; i++)
 	{
 		grade.newrecord();
 		grade.set_math(i);
 		grade.set_Chinese(i);
 		grade.set_english(i);
-		sprintf(name,"%d",i % 10);
-		sprintf(room,"%d",i % 10);
+		sprintf(name,"%d",i % 13);
+		sprintf(room,"%d",i % 16);
 		grade.append(i,name,room);
 	}
 	studentdb.CommitTransaction();
 
-	while (1)
-	{
-		if (grade.lists())
-		{
-			if (grade.end())
-			{
-				studentdb.BeginTransaction();
-				grade.erase();
-				studentdb.CommitTransaction();
-			}
-			studentdb.BeginTransaction();
-			if (grade.find_by_nameclassroom("0","8",LARGE))
-			{
-				grade.end();
-				while (1)
-				{
-					printf("%d\n",grade.get_id());
-					if (grade.prev() == false)
-						break;
-				}
-			}
-			studentdb.CommitTransaction();
-		}
-		else
-		{
-			break;
-		}
-	}
-	
-	studentdb.GetMemoryInfo(size,inused);
-	printf("size=%d,inused=%d\n",size,inused);
-	getc(stdin);
-	studentdb.BeginTransaction();
-	grade.backup("grade.tb");
-	studentdb.Reset();
-	grade.load("grade.tb");
-	studentdb.CommitTransaction();
-	
-	studentdb.BeginTransaction();
-	if (grade.find_by_nameindex("12",LARGE_EQ))
-	{
-		grade.end();
-		do 
-		{
-			printf("FindById:  id=%d,name=%s,classroom=%s,math=%4.1f,chinese=%4.1f,english=%4.1f\n",
-				grade.get_id(),grade.get_name(),grade.get_classroom(),
-				grade.get_math(),grade.get_Chinese(),grade.get_english());
-		}while(grade.prev());
-	}
-	else
-	{
-		printf("not found\n");
-	}
-	studentdb.CommitTransaction();
+    // List all records of the table
+    studentdb.BeginTransaction();
+    if (grade.lists())
+    {
+        if (grade.end())
+        {
+            grade.erase();
+        }
 
-	grade.dump();
-	printf("dbversion=%s\n",studentdb.DbVersion());
-	printf("libversion=%s\n",studentdb.LibVersion());
-	studentdb.GetMemoryInfo(size,inused);
-	printf("size=%d,inused=%d\n",size,inused);
-	getc(stdin);
-	studentdb.Close();
-	printf("closed\n");
-	getc(stdin);
-	return 0;
+        if (grade.find_by_nameclassroom("0","8",LARGE))
+        {
+            if(grade.end()) {
+                do {
+                    printf("id=%d, name=%s\n",grade.get_id(), grade.get_name());
+                } while(grade.prev());
+            }
+        }
+    }
+    studentdb.CommitTransaction();
+
+    // Use index for range searching records in the table
+    studentdb.BeginTransaction();
+    if (grade.find_by_nameindex("12",LARGE_EQ))
+    {
+        if(grade.first()) {
+            do 
+            {
+                printf("FindByName >=\"12\":  id=%d,name=%s,classroom=%s,math=%4.1f,chinese=%4.1f,english=%4.1f\n",
+                        grade.get_id(),grade.get_name(),grade.get_classroom(),
+                        grade.get_math(),grade.get_Chinese(),grade.get_english());
+            } while(grade.next());
+        }
+    }
+    else
+    {
+        printf("not found\n");
+    }
+    studentdb.CommitTransaction();
+
+    grade.dump();
+    printf("dbversion=%s\n",studentdb.DbVersion());
+    printf("libversion=%s\n",studentdb.LibVersion());
+    studentdb.GetMemoryInfo(size,inused);
+    printf("size=%d,inused=%d\n",size,inused);
+    getc(stdin);
+    studentdb.Close();
+    printf("closed\n");
+    getc(stdin);
+    return 0;
 }

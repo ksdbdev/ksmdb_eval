@@ -81,7 +81,7 @@ int main(int argc,char **argv)
 {
     DB_perf perf;
 	long i,k,count,c;
-	long size,inused;
+	size_t size,inused;
     long dbsize = 1000*1024*1024;
 	char errmsg[300];
 	XTIME s,e;
@@ -102,7 +102,6 @@ int main(int argc,char **argv)
 	}
 	perf.SetErrorHandle(myerrhandle);
 	perf.UnLockDb();
-	perf.LoadLicense("perf.lic",errmsg);
 
 	count=1000000;
 

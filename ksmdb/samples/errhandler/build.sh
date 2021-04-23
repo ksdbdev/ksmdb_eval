@@ -1,3 +1,3 @@
-../../bin/kstbcmp db_def.ks student
+../../bin/linux/kstbcmp db_def.ks student
 
 make

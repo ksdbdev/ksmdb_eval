@@ -1,15 +1,17 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmark", "benchmark\benchmark.vcproj", "{02F72C85-3C82-4936-897E-752698B6E43D}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1062
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "benchmark", "benchmark\benchmark.vcxproj", "{02F72C85-3C82-4936-897E-752698B6E43D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simpleksmdb", "simpleksmdb\simpleksmdb.vcproj", "{93655541-823A-4826-BC5F-A0F66D736830}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simpleksmdb", "simpleksmdb\simpleksmdb.vcxproj", "{93655541-823A-4826-BC5F-A0F66D736830}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "backup", "backup\backup.vcproj", "{3FB3A0F5-2309-47D7-ADAA-4458C2AF0C58}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "backup", "backup\backup.vcxproj", "{3FB3A0F5-2309-47D7-ADAA-4458C2AF0C58}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "errhandler", "errhandler\errhandler.vcproj", "{6421F65F-8E9B-46DA-9EF7-BDF08566B26B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "errhandler", "errhandler\errhandler.vcxproj", "{6421F65F-8E9B-46DA-9EF7-BDF08566B26B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multithread", "multithread\multithread.vcproj", "{5F19BA37-E920-4CA5-81D3-8DDF251EF72C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "multithread", "multithread\multithread.vcxproj", "{5F19BA37-E920-4CA5-81D3-8DDF251EF72C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,5 +42,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A8FD9FC-6E4F-448A-8BE5-714DB04DC47F}
 	EndGlobalSection
 EndGlobal

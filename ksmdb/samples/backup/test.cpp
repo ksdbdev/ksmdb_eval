@@ -12,7 +12,7 @@ bool myerrhandle(int errcode,char *errmsg)
 int main(int argc,char **argv)
 {
 	DB_student studentdb;
-	long size,inused;
+	size_t size,inused;
 	int errcode;
 	int i;
 	char errmsg[300];

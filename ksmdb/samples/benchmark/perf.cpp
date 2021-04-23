@@ -5,14 +5,14 @@ DB_perf::DB_perf()
 	m_database = NULL;
 }
 
-bool DB_perf::Create(char *path,char *name,long size)
+bool DB_perf::Create(char *path,char *name,size_t size)
 {
 	if(m_inited)
 	{
 		return true;
 	}
 	m_inited=true;
-	if (KsCreateDb(&m_database,path,name,"20200227-12:32:18:000",size) == true)
+	if (KsCreateDb(&m_database,path,name,"20210423-10:52:06:000",size) == true)
 	{
 		KsAddTable(m_database,"grade");
 		KsAddField(m_database,0,"id",KSTYPE_INT4,4,-1);
@@ -37,7 +37,7 @@ bool DB_perf::Open(char *path,char *name,int mode,int port,bool isolate,int reus
 		return true;
 	}
 	m_inited=true;
-	if (KsOpenDb(&m_database,path,name,"20200227-12:32:18:000",mode,port,isolate, reuse_shmmap, shmrcset_mode) == true)
+	if (KsOpenDb(&m_database,path,name,"20210423-10:52:06:000",mode,port,isolate, reuse_shmmap, shmrcset_mode) == true)
 	{
 		KsLoadDbInfo(m_database);
 	}
@@ -90,7 +90,7 @@ char *DB_perf::GetColData(KsRecordHandle handle,int col)
 	return KsGetColData(m_database,handle,col);
 }
 
-void DB_perf::GetMemoryInfo(long &size,long &inused)
+void DB_perf::GetMemoryInfo(size_t &size,size_t &inused)
 {
 	KsMemoryInfo(m_database,&size,&inused);
 }
@@ -128,16 +128,6 @@ void DB_perf::CommitTransaction()
 void DB_perf::GetLastError(int *errcode,char *errmsg)
 {
 	KsGetError(m_database,*errcode,errmsg);
-}
-
-bool DB_perf::LoadLicense(char *licensefilename,char *errmsg)
-{
-	 return KsDbLoadLicense(licensefilename,errmsg);
-}
-
-void DB_perf::GetLicenseInfo(int &controlexpitedate,int &expitedate,int &controltransactioncount,long &transactioncount,int &delay)
-{
-	KsDbGetLicenseInfo(&controlexpitedate,&expitedate,&controltransactioncount,&transactioncount,&delay);
 }
 
 void DB_perf::Close()
@@ -257,6 +247,16 @@ int  TB_grade::recordrowid()
 bool TB_grade::dump(char *filename)
 {
 	return KsDumpTable(m_database,0,filename);
+}
+
+bool TB_grade::SaveCsv(char *filename)
+{
+	return KsWriteTableCsv(m_database,0,filename);
+}
+
+bool TB_grade::LoadCsv(char *filename)
+{
+	return KsReadTableCsv(m_database,0,m_record,filename);
 }
 
 bool TB_grade::SaveTXT(char *filename)

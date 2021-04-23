@@ -10,7 +10,7 @@ private:
 public:
 	DB_student();
 	virtual ~DB_student(){};
-	bool Create(char *path,char *name,long size);
+	bool Create(char *path,char *name,size_t size);
 	bool Open(char *path,char *name,int mode,int port,bool isolate, int reuse_shmmap, int shmrcset_mode=0);
 	void UnLockDb();
 	void SetErrorHandle(KsErrorHandle handle);
@@ -20,7 +20,7 @@ public:
 	int  GetColSize(KsRecordHandle handle,int col);
 	int  GetColDecimal(KsRecordHandle handle,int col);
 	char *GetColData(KsRecordHandle handle,int col);
-	void GetMemoryInfo(long &size,long &inused);
+	void GetMemoryInfo(size_t &size,size_t &inused);
 	void Reset();
 	bool Backup(char *filename);
 	bool Load(char *filename);
@@ -28,8 +28,6 @@ public:
 	void RollbackTransaction();
 	void CommitTransaction();
 	void GetLastError(int *errcode,char *errmsg);
-	bool LoadLicense(char *licensefilename,char *errmsg);
-	void GetLicenseInfo(int &controlexpitedate,int &expitedate,int &controltransactioncount,long &transactioncount,int &delay);
 	void Close();
 	char *LibVersion();
 	char *DbVersion();
@@ -57,6 +55,8 @@ public:
 	bool gotorow(int rowid);
 	int  recordrowid();
 	bool dump(char *filename="grade");
+	bool SaveCsv(char *filename="grade.csv");
+	bool LoadCsv(char *filename="grade.csv");
 	bool SaveTXT(char *filename="grade.txt");
 	bool LoadTXT(char *filename="grade.txt");
 	bool SaveBinary(char *filename="grade.txt");

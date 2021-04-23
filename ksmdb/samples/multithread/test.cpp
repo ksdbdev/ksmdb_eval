@@ -130,7 +130,7 @@ rthread(void *arg)
 int main(int argc,char **argv)
 {
 	DB_student studentdb;
-	long size,inused;
+	size_t size,inused;
 	int errcode;
 
 	char errmsg[300];

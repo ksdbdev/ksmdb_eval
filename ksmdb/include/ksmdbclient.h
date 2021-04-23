@@ -1,18 +1,16 @@
 /*********************************************************************************
   *Copyright(C),2008 - 2020  Kingstar
   *FileName:  ksmdbclient.h
-  *Author:  é’±æ­£å
+  *Author:  Ç®Õı»ª
   *Version: KSMDB V2.3
   *Description:  
-     å†…å­˜åº“å®¢æˆ·ç«¯APIæ¥å£ã€‚
-
-
+     ÄÚ´æ¿â¿Í»§¶ËAPI½Ó¿Ú¡£
   *History: 
      1.Date: 2008.1
-       Author: é’±æ­£å
-       Modification: åˆ›å»ºæ–‡ä»¶
+       Author: Ç®Õı»ª
+       Modification: ´´½¨ÎÄ¼ş
 	   
-**********************************************************************************/ 
+**********************************************************************************/
 
 #ifndef __KSMDBCLI_H
 #define __KSMDBCLI_H
@@ -61,8 +59,6 @@ bool KsRestoreDatabase(KSMDBCLIHANDLE handle,char *filename,int *errcode,char *e
 bool KsBackupTable(KSMDBCLIHANDLE handle,int tableid,char *filename,int *errcode,char *errmsg);
 bool KsRestoreTable(KSMDBCLIHANDLE handle,int tableid,char *filename,int *errcode,char *errmsg);
 bool KsResetDatabase(KSMDBCLIHANDLE handle,int *errcode,char *errmsg);
-
-//zhb, 2017.11.21, kdmdb2.3
 bool KsCliClearWildTrans(KSMDBCLIHANDLE handle, unsigned long stype, unsigned long pid, unsigned long tid, int *errcode,char *errmsg);
 bool KsCliClearDBWildTrans(KSMDBCLIHANDLE handle, int *errcode,char *errmsg);
 

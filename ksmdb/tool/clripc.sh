@@ -125,43 +125,37 @@ dbfilename=${dbpath}"//"${dbname}
 
 printf "target ksmdb is: dbpath=%s dbname=%s\n" $dbpath $dbname
 
-#内存数据库文件锁对应的文件
-dbfilelockres=${dbfilename}
-if test -f ${dbfilelockres} ; then
-    resfilenames[0]=${dbfilelockres}
-fi
-
 #事务相关自旋锁对应的文件
 spinfilename=${dbfilename}".lk"
 if test -f ${spinfilename} ; then
-    resfilenames[1]=${spinfilename}
+    resfilenames[0]=${spinfilename}
 fi
 
 #自旋锁相关的信号量对应的文件
 sema_r_1=${dbfilename}".1.r.s0.sem"
 if test -f ${sema_r_1} ; then
-    resfilenames[2]=${sema_r_1}
+    resfilenames[1]=${sema_r_1}
 fi
 
 sema_w_1=${dbfilename}".1.w.s0.sem"
 if test -f ${sema_w_1} ; then
-    resfilenames[3]=${sema_w_1}
+    resfilenames[2]=${sema_w_1}
 fi
 
 sema_r_2=${dbfilename}".2.r.s0.sem"
 if test -f ${sema_r_2} ; then
-    resfilenames[4]=${sema_r_2}
+    resfilenames[3]=${sema_r_2}
 fi
 
 sema_w_2=${dbfilename}".2.w.s0.sem"
 if test -f ${sema_w_2} ; then
-    resfilenames[5]=${sema_w_2}
+    resfilenames[4]=${sema_w_2}
 fi
 
 #事务信息存储shm对应的文件
 sessionctfilename=${dbfilename}"_session_shmname"
 if test -f ${sessionctfilename} ; then
-    resfilenames[6]=${sessionctfilename}
+    resfilenames[5]=${sessionctfilename}
 fi
 
 #内存数据库数据对应的资源文件
@@ -203,6 +197,12 @@ do
     echo "clear ksmdb files: rm -f ${rsfile}"
     rm -f $rsfile
 done
+
+printf "clear sem for handle mutex :-------------------------------\n"
+semname="sem."${dbname}
+echo "clear sem for handle mutex: rm -f /dev/shm/${semname}"
+rm -f /dev/shm/${semname}
+
 
 
 
